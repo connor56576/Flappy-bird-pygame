@@ -9,7 +9,7 @@ clock = pygame.time.Clock()
 running = True
 dt = 0
 GRAVITY = 500
-JUMP_STRENGTH = -300
+JUMP_STRENGTH = -300 
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 player_velocity = 0

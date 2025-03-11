@@ -2,6 +2,8 @@ import pygame
 
 # pygame setup
 pygame.init()
+WIDTH = 1280
+HEIGHT = 720
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
@@ -14,21 +16,25 @@ player_velocity = 0
 canjump = True
 
 
-class Player:
-    def __init__(self):
+class Player(pygame.sprite.Sprite):
+    def __init__(self, *groups):
+        super().__init__(*groups)
         self.size = (100, 100)
-        self.big_image = pygame.image.load("C:\\Users\Connor\\OneDrive\\Desktop\\Bird.png").convert()  
+        self.big_image = pygame.image.load("Bird.png").convert()  
         self.big_image.set_colorkey((255,255,255))  
-
         self.image = pygame.transform.scale(self.big_image, self.size)
-  
 
     def draw(self, position):
         screen.blit(self.image, (int(position.x), int(position.y)))
+        self.rect = pygame.Rect(int(position.x)+ 13, int(position.y) + 20, 70, 60) # adjustments to rect
+        pygame.draw.rect(screen, "red", background_rect, 3)
+  
 
 
-background_surface = pygame.image.load("C:\\Users\Connor\\OneDrive\\Desktop\\Background.png")
+
+background_surface = pygame.image.load("Background.png")
 background_surface = pygame.transform.scale(background_surface,(1280,720))
+background_rect = pygame.Rect(0,660, WIDTH,1)
 
 
 
